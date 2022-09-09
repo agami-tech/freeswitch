@@ -1,0 +1,19 @@
+[Unit]
+Description=freeswitch
+After=syslog.target network.target local-fs.target
+
+[Service]
+; service
+Type=forking
+PIDFile=/usr/local/freeswitch/run/freeswitch.pid
+PermissionsStartOnly=true
+ExecStart=/usr/local/freeswitch/bin/freeswitch
+TimeoutSec=45s
+Restart=on-failure
+; exec
+WorkingDirectory=/usr/local/freeswitch/bin
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
